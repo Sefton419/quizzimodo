@@ -57,7 +57,7 @@ angular.module('quizzimodo.services', [])
       url: '/api/quizzes'
     })
     .then(function(resp) {
-      return resp.data
+      return resp.data;
     });
   };
 
@@ -67,7 +67,7 @@ angular.module('quizzimodo.services', [])
       url: '/api/quizzes/' + quizID
     })
     .then(function(resp) {
-      return resp.data
+      return resp.data;
     });
   };
 
@@ -78,7 +78,7 @@ angular.module('quizzimodo.services', [])
       data: quizResult
     })
     .then(function(resp) {
-      return resp.data
+      return resp.data;
     });
   };
 
@@ -86,10 +86,10 @@ angular.module('quizzimodo.services', [])
     return $http({
       method: 'POST',
       url: '/api/quizzes/',
-      data: quiz 
+      data: quiz
     })
     .then(function(resp) {
-      return resp.data
+      return resp.data;
     });
   };
 

@@ -68,7 +68,7 @@ angular.module('quizzimodo', [
         '': {
           templateUrl: '../views/selectQuiz.html',
           controller: 'QuizzesController'
-        } 
+        }
       }
     })
     .state('takeQuiz', {
@@ -80,7 +80,7 @@ angular.module('quizzimodo', [
         '': {
           templateUrl: '../views/takeQuiz.html',
           controller: 'TakeController'
-        } 
+        }
       }
     })
     .state('makeQuiz', {
@@ -99,6 +99,22 @@ angular.module('quizzimodo', [
         }
       }
     })
+    .state('editQuiz', {
+      url: '/edit_quiz',
+      views: {
+        'nav': navView,
+        'signin@makeQuiz': signoutView,
+        'menu@makeQuiz': menuView,
+        '': {
+          templateUrl: '../views/editQuiz.html',
+          controller: 'QuizController'
+        },
+        'question@makeQuiz': {
+          templateUrl: '../views/question.html',
+          controller: 'QuizController'
+        }
+      }
+    })
     .state('results', {
       url: '/results',
       views: {
@@ -108,10 +124,10 @@ angular.module('quizzimodo', [
         '': {
           templateUrl: '../views/results.html',
           controller: 'ResultsController'
-        } 
+        }
       }
     });
-    
+
   $httpProvider.interceptors.push('AttachTokens');
 })
 

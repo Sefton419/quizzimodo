@@ -1,14 +1,17 @@
 angular.module('quizzimodo.quiz', [])
 
-.controller('QuizController', function($scope, $location, Quiz, $rootScope) {	 
+.controller('QuizController', function($scope, $location, Quiz, $rootScope) {
 
+  // quiz topics are being sent to root scope
   $scope.topics = $rootScope.topics;
-  
+
+  // watches userTopic and subTopics to make sure they are updated
   $scope.$watch('topicPick', function(x){
     $scope.userTopic = $scope.topics[x]['topic'];
     $scope.subTopics = $scope.topics[x]['subtopics'];
   });
 
+  //
   $scope.$watch('subtopicPick', function(y){
     $scope.userSubtopic = $scope.subTopics[y];
   });
@@ -16,12 +19,13 @@ angular.module('quizzimodo.quiz', [])
   $scope.quiz = {
     questions: []
   }
+
   $scope.currentlyEditing = false;
 
   $scope.question = {question: '', answer_options: [{}, {}, {}, {}]};
 
   function checkQuestionFields () {
-    if($('input[type=radio]:checked').length === 0 
+    if($('input[type=radio]:checked').length === 0
       || $scope.question.question === ''
       || $scope.question.answer_options[0].answer === ''
       || $scope.question.answer_options[1].answer === ''
@@ -96,3 +100,4 @@ angular.module('quizzimodo.quiz', [])
       });
   }
 });
+
