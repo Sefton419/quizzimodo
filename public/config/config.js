@@ -103,8 +103,8 @@ angular.module('quizzimodo', [
       url: '/edit_quiz',
       views: {
         'nav': navView,
-        'signin@makeQuiz': signoutView,
-        'menu@makeQuiz': menuView,
+        'signin@editQuiz': signoutView,
+        'menu@editQuiz': menuView,
         '': {
           templateUrl: '../views/editQuiz.html',
           controller: 'QuizController'
@@ -112,6 +112,18 @@ angular.module('quizzimodo', [
         'question@makeQuiz': {
           templateUrl: '../views/question.html',
           controller: 'QuizController'
+        }
+      }
+    })
+    .state('selectEditQuiz', {
+      url: '/select_edit_quiz',
+      views: {
+        'nav': navView,
+        'signin@selectEditQuiz': signoutView,
+        'menu@selectEditQuiz': menuView,
+        '': {
+          templateUrl: '../views/selectEditQuiz.html',
+          controller: 'QuizzesController'
         }
       }
     })
