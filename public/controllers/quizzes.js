@@ -52,13 +52,14 @@ angular.module('quizzimodo.quizzes', [])
   $scope.takeQuiz = function(quizID){
     console.log('- - - - - - - - - quizID from takeQuiz- - - - - - - - : ', quizID)
     Quiz.setData(quizID);
-    $location.path('/take_quiz');
+    $location.path('/edit_quiz');
   };
 
   $scope.editQuiz = function(quizID){
     console.log('- - - - - - - - - quizID from editQuiz - - - - - - - - : ', quizID)
-    Quiz.setData(quizID);
+    Quiz.getQuiz(quizID);
     $location.path('/take_quiz');
+    console.log('- - - - - - - - quizzes: ', $scope.quizzes)
   };
 
 

@@ -9,7 +9,7 @@
     <md-content id="quiz-setup" class="md-padding" layout-xs="column" layout="row" layout-align="left center">
        <div flex-xs="50" flex-gt-xs="50" layout="column" layout-align="left center">
         <form id="title-form">
-           Quiz Title: <input type="text" ng-model="quizName" /><br />
+           Quiz Title: <input type="text" placeholder="{{$index}}" ng-model="quizName" /><br />
            Quiz Details: <input type="text" ng-model="quizDetails" /><br />
         </form>
       </div>
