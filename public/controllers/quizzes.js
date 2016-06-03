@@ -2,6 +2,15 @@ angular.module('quizzimodo.quizzes', [])
 
 .controller('QuizzesController', function($scope, $location, Quiz, $rootScope) {
 
+  $scope.taken;
+  //
+  $scope.quizzes;
+  //
+  $scope.userTopic;
+  $scope.subTopic;
+  $scope.userTopic;
+
+
   $scope.$watch('topicPick', function(x){
     $scope.userTopic = $scope.topics[x]['topic'];
     $scope.subTopics = $scope.topics[x]['subtopics'];
@@ -20,10 +29,12 @@ angular.module('quizzimodo.quizzes', [])
   $scope.startUp = function(){
     Quiz.getQuizzes()
     .then(function(data){
+
       $scope.quizzes = data.data;
       $scope.temp = data.data;
       $scope.image = '../assets/avatar.png';
       $scope.topics = $rootScope.topics;
+
       if(data.data.result){
         $scope.taken = 'Retake';
       } else {
@@ -39,9 +50,16 @@ angular.module('quizzimodo.quizzes', [])
 
 
   $scope.takeQuiz = function(quizID){
+    console.log('- - - - - - - - - quizID from takeQuiz- - - - - - - - : ', quizID)
     Quiz.setData(quizID);
     $location.path('/take_quiz');
   };
-  
+
+  $scope.editQuiz = function(quizID){
+    console.log('- - - - - - - - - quizID from editQuiz - - - - - - - - : ', quizID)
+    Quiz.setData(quizID);
+    $location.path('/take_quiz');
+  };
+
 
 });

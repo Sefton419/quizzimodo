@@ -50,6 +50,7 @@ angular.module('quizzimodo.services', [])
   var getData = function(data){
     return persistedData;
   }
+  // - - - - - - - - - - >>>>>>>>>>>
 
   var getQuizzes = function() {
     return $http({
@@ -60,6 +61,8 @@ angular.module('quizzimodo.services', [])
       return resp.data;
     });
   };
+
+  // - - - - - - - - - - >>>>>>>>>>>
 
   var getQuiz = function(quizID) {
     return $http({

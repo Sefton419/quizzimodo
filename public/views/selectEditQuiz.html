@@ -1,0 +1,33 @@
+<div id="select-quiz" layout="column" ng-cloak="" flex-offset="10" flex="70">
+    <h1>Choose a Quiz to Edit</h1>
+    <span class="error">{{ selectError }}</span>
+
+  <md-content id="quiz-selector" class="md-padding" layout-xs="column" layout="row">
+     <div flex-xs="" flex-gt-xs="90" layout="column">
+
+       <md-card class="quiz-card" ng-repeat="key in quizzes">
+         <md-card-title>
+           <md-card-title-text>
+             <span class="md-headline">{{ key.quiz }}</span>
+           </md-card-title-text>
+           <md-card-title-media>
+
+           </md-card-title-media>
+         </md-card-title>
+         <md-card-actions layout="row" layout-align="end center">
+           <md-button ng-click="takeQuiz(key.id)">EDIT QUIZ</md-button>
+           <md-menu md-position-mode="target-right target">
+             <md-button aria-label="Open demo menu" ng-click="$mdOpenMenu($event)">
+
+             </md-button>
+             <md-menu-content width="4">
+               <md-menu-item class="md-padding" >
+                 {{ key.details }}
+               </md-menu-item>
+             </md-menu-content>
+           </md-menu>
+         </md-card-actions>
+       </md-card>
+     </div>
+   </md-content>
+</div>

@@ -51,7 +51,7 @@ module.exports = {
     })
     .catch((err) => next(err));
   },
-  deleteQuiz: (req, res, next) => 
+  deleteQuiz: (req, res, next) =>
     Quiz.forge({quiz_id: req.params.quiz_id})
     .fetch({require: true})
     .then((quiz) =>
@@ -69,7 +69,16 @@ module.exports = {
       res.json({error: false, data: quiz})
     })
     .catch((err) => next(err))
-  , 
+  ,
+  editQuiz: (req, res, next) =>
+    Quiz.forge({id: req.params.quiz_id})
+    .fetch({require: true, withRelated: ['questions.answer_options', 'attempts.user_answers']})
+    .then((quiz) => {
+      // console.log("quiz.related('questions'): ", quiz.related('questions'));
+      res.json({error: false, data: quiz})
+    })
+    .catch((err) => next(err))
+  ,
   getQuizzes: (req, res, next) =>
     Quizzes.forge()
     .fetch()
@@ -87,8 +96,8 @@ module.exports = {
     .catch((err) => next(err))
   ,
   createAttempt: (req, res, next) => {
-    var pass_count = 0, 
-      fail_count = 0, 
+    var pass_count = 0,
+      fail_count = 0,
       result = 0.0,
       quiz = req.body;
 
@@ -121,7 +130,7 @@ module.exports = {
     })
     .then((attemptID) => {
       var user_answers = [];
-      quiz.questions.forEach((question) => 
+      quiz.questions.forEach((question) =>
         user_answers.push({attempt_id: attemptID[0], answer_option_id: question.userAnswer})
       );
       bookshelf.knex('user_answer').insert(user_answers)
